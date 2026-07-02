@@ -1,0 +1,35 @@
+<h2>All Products</h2>
+
+<table border="1">
+    <tr>
+    <th>NAME</th>
+    <th>PRICE</th>
+    <th>ACTION</th>
+    </tr>
+    {% for product in products %}
+
+        <tr>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>
+                <form method="POST" action="/delete" style="display: inline;">
+                    <input type="hidden" name="name" value="{{product.name}}">
+                    <button>Delete</button>
+                </form>
+            </td>
+            <td>
+                <form method="get" action="/edit" style="display: inline;">
+                    <input type="hidden" name="name" value="{{product.name}}">
+                    <button>Edit</button>
+                </form>
+            </td>
+        </tr>
+
+    {% endfor %}
+</table>
+
+
+
+<br>
+<a href="/add"><button>Add More product</button></a>
+<a href="/"><button>Go To Home</button></a>

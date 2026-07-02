@@ -1,0 +1,17 @@
+<h2>Add product</h2>
+
+{% if error %}
+   <h4> {{ error }} </h4>
+{% endif %}
+
+<br>
+
+<form method="post">
+    <input type="text" name="name" placeholder="Enter Product Name" value="{{name}}">
+    <input type="number" name="price" placeholder="Enter Product Price" value="{{price}}">
+    <input type="hidden" name="old_name" value="{{old_name}}">
+    <button>Add</button>
+</form>
+
+<br>
+<a href="/"><button>Go To Home</button></a>
