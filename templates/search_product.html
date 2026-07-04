@@ -1,0 +1,41 @@
+<h2>Search Page</h2>
+
+<form action="/search" method = "GET">
+    <input type="text" placeholder="Enter Product Name" name="name" value="{{search_text}}">
+    <button>Search</button>
+</form>
+
+<br>
+
+{% if search_text %}
+    {% if results %}
+        {{results|length}} results showing for "{{search_text}}".
+        <br><br>
+        <table border="2">
+
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+
+
+            {% for product in results %}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+    {% else %}
+        No Products Found.
+    {% endif %}
+{% endif %}
+
+
+
+<br>
+
+<a href = "/">
+    <button>Go To Home</button>
+</a>

@@ -86,6 +86,22 @@ def edit_product():
                 product["price"] = int(price)
                 save_products(products)
                 return redirect("/products")
+            
+
+@app.route("/search")
+def search():
+    search_text = request.args.get("name","").strip()
+    results = []
+
+    if search_text:
+        for product in products:
+            if search_text.lower() in product["name"].lower():
+                results.append(product)
+
+    return render_template("search_product.html", results = results, search_text = search_text)
+            
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
