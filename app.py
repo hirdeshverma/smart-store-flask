@@ -11,7 +11,9 @@ def home():
 
 @app.route("/products")
 def view_products():
-    return render_template("products.html", products = products)
+    sorted_products = products.copy()
+    sorted_products.sort(key= lambda product:product["name"])
+    return render_template("products.html", products = sorted_products)
 
 
 @app.route("/add", methods=["GET", "POST"])
@@ -97,7 +99,7 @@ def search():
         for product in products:
             if search_text.lower() in product["name"].lower():
                 results.append(product)
-
+    results.sort(key=lambda product:product["name"])
     return render_template("search_product.html", results = results, search_text = search_text)
             
 

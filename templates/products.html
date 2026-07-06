@@ -1,16 +1,19 @@
 <h2>All Products</h2>
 
+📦 Total Products : {{ products|length }}
+<br><br>
 <table border="1">
     <tr>
     <th>NAME</th>
     <th>PRICE</th>
-    <th>ACTION</th>
+    <th>DELETE</th>
+    <th>EDIT</th>
     </tr>
     {% for product in products %}
 
         <tr>
             <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
+            <td>₹{{product.price}}</td>
             <td>
                 <form method="POST" action="/delete" style="display: inline;">
                     <input type="hidden" name="name" value="{{product.name}}">
