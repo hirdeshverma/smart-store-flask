@@ -1,38 +1,51 @@
-<h2>All Products</h2>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 
-📦 Total Products : {{ products|length }}
-<br><br>
-<table border="1">
-    <tr>
-    <th>NAME</th>
-    <th>PRICE</th>
-    <th>DELETE</th>
-    <th>EDIT</th>
-    </tr>
-    {% for product in products %}
+<body>
+    <div class="container">
+        <h2>All Products</h2>
 
-        <tr>
-            <td>{{product.name}}</td>
-            <td>₹{{product.price}}</td>
-            <td>
-                <form method="POST" action="/delete" style="display: inline;">
-                    <input type="hidden" name="name" value="{{product.name}}">
-                    <button>Delete</button>
-                </form>
-            </td>
-            <td>
-                <form method="get" action="/edit" style="display: inline;">
-                    <input type="hidden" name="name" value="{{product.name}}">
-                    <button>Edit</button>
-                </form>
-            </td>
-        </tr>
+        📦 Total Products : {{ products|length }}
+        <br><br>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                    <th>NAME</th>
+                    <th>PRICE</th>
+                    <th>DELETE</th>
+                    <th>EDIT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
 
-    {% endfor %}
-</table>
+                        <tr>
+                            <td class="name">{{product.name}}</td>
+                            <td class="price">₹{{product.price}}</td>
+                            <td class="action">
+                                <form method="POST" action="/delete" style="display: inline;">
+                                    <input type="hidden" name="name" value="{{product.name}}">
+                                    <button class="delete-btn">Delete</button>
+                                </form>
+                            </td>
+                            <td class="action">
+                                <form method="get" action="/edit" style="display: inline;">
+                                    <input type="hidden" name="name" value="{{product.name}}">
+                                    <button class="edit-btn">Edit</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
 
-
-<br>
-<a href="/add"><button>Add More product</button></a>
-<a href="/"><button>Go To Home</button></a>
+        <br>
+        <a href="/add"><button>Add More product</button></a>
+        <a href="/"><button>Go To Home</button></a>
+    </div>
+</body>
